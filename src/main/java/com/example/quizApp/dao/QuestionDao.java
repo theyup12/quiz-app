@@ -17,7 +17,7 @@ public class QuestionDao {
     @Autowired
     protected SessionFactory sessionFactory;
     protected final Session getCurrentSession(){return sessionFactory.getCurrentSession();}
-    @Transactional
+
     public List<Question> getQuestions(Integer categoryId){
         // get the current hibernate session
         Session currentSession = getCurrentSession();
@@ -27,9 +27,9 @@ public class QuestionDao {
         theQuery.setParameter("categoryId", categoryId);
         theQuery.setMaxResults(10);
         List<Question> questions = theQuery.getResultList();
+        for(Question q: questions){
+            q.getChoices().size();
+        }
         return questions;
     }
-//    @Transactional
-//    public List<Choice> getChoicesByQuestions(){
-//    }
 }

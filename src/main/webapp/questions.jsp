@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: theyup12
@@ -22,7 +23,16 @@
         <table>
             <c:forEach var="tempQuestions" items="${questions}">
                 <tr>
+                    <td>${tempQuestions.getQuestionId()}</td>
                     <td>${tempQuestions.getContent()}</td>
+                </tr>
+                <tr>
+                    <c:forEach var="choice" items="${tempQuestions.getChoices()}">
+                        <td>
+                            <input type="radio" name="input" value="${choice.getChoiceId()}">
+                            <lable>${choice.getContents()}</lable>
+                        </td>
+                    </c:forEach>
                 </tr>
             </c:forEach>
         </table>

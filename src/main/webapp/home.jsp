@@ -10,31 +10,34 @@
 <html>
 <head>
     <title>Category Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
-    <div id="wraper">
-        <div id="header">
-            <h2>Categories</h2>
-        </div>
+<%@include file="nav.jsp"%>
+    <div id="header">
+        <h2>Categories</h2>
     </div>
-    <div id="container">
-        <div id="content">
-            <table>
-                <c:forEach var="category" items="${categories}">
-                    <c:url var="questionsLink" value="/questions">
-                        <c:param name = "categoryId" value="${category.getCategoryId()}"></c:param>
-                    </c:url>
-                    <tr>
-                        <td>${category.getCategoryName()}</td>
-                        <td>${category.getDescription()}</td>
-                        <td>${category.getCategoryId()}</td>
-                        <td>
-                            <a href="${questionsLink}">Start Quiz</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
+    <div class="row">
+            <c:forEach var="category" items="${categories}">
+            <c:url var="questionsLink" value="/questions">
+                <c:param name = "categoryId" value="${category.getCategoryId()}"></c:param>
+            </c:url>
+                <div class="col-sm-4">
+                    <div class="card" style="flex: auto">
+                        <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h4 class="card-title">${category.getCategoryName()}</h4>
+                                <p>${category.getDescription()}</p>
+                                <a href="${questionsLink}" class="btn btn-primary">Start Quiz</a>
+                            </div>
+                    </div>
+                </div>
+            </c:forEach>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

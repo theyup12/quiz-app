@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -31,5 +32,5 @@ public class Question implements Serializable {
     private String status;
 
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
-    private Set<Choice> choices = new HashSet<>();
+    private List<Choice> choices;
 }
