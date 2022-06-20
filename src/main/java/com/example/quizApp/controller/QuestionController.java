@@ -7,19 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.List;
-
+@SessionAttributes({"questionsList", "index"})
 @Controller
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping("/questions")
+    @GetMapping("/show-questions")
     public String listQuestions(@RequestParam("categoryId")Integer categoryId, Model model){
-        List<Question> theQuestions = questionService.getQuestionsWithType(categoryId);
-        model.addAttribute("questions", theQuestions);
+        List<Question> questionsList = questionService.getQuestionsWithType(categoryId);
+        System.out.println(questionsList.get(1).getQuestionId());
+        model.addAttribute("questionsList", questionsList);
+        model.addAttribute("index", 0);
         return "questions";
     }
+//    @PostMapping("/")
 }

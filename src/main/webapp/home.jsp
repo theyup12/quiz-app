@@ -20,12 +20,12 @@
     </div>
     <div class="row">
             <c:forEach var="category" items="${categories}">
-            <c:url var="questionsLink" value="/questions">
+            <c:url var="questionsLink" value="/show-questions">
                 <c:param name = "categoryId" value="${category.getCategoryId()}"></c:param>
             </c:url>
                 <div class="col-sm-4">
                     <div class="card" style="flex: auto">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="${pageContext.request.contextPath}/image/${category.getCategoryName()}.png" class="card-img-top" alt="${category.getCategoryName()}">
                             <div class="card-body">
                                 <h4 class="card-title">${category.getCategoryName()}</h4>
                                 <p>${category.getDescription()}</p>
