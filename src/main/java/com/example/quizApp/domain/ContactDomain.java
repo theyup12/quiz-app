@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContractDomain {
+public class ContactDomain {
     public String firstName;
     public String lastName;
     public String email;

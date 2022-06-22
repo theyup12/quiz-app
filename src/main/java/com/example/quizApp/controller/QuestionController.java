@@ -27,6 +27,7 @@ public class QuestionController {
     }
     @PostMapping("/quiz")
     public String nextQuizQuestion(@RequestParam("action") String action, @RequestParam Integer index, Model model){
+
         model.addAttribute("index", action);
         return "questions";
     }

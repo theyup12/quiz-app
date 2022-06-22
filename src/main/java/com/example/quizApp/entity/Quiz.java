@@ -19,18 +19,20 @@ public class Quiz implements Serializable {
     @Column(name = "quiz_id")
     private int quizId;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     @JoinColumn(name="category_id")
     private Category category;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @Column(name="quiz_name")
     private User user;
+
+    @Column(name="quiz_name")
+    private String name;
 
     @Column(name="start_time")
     private String startTime;
 
-    @Column(name="end_time")
-    private String endTime;
+    @Column(name="finish_time")
+    private String finishTime;
 }

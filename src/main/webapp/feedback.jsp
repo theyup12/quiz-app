@@ -14,21 +14,27 @@
 </head>
 <body>
 <%@include file="nav.jsp"%>
-<div class="container-md">
-    <div class="card text-center">
-        <div class="card-header">
-            Featured
+<div class="container mt-5">
+    <h1>Contact Me!</h1>
+    <form class="row g-2">
+        <div class="col-md-12">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label>
+            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                <option selected>Choose...</option>
+                <option value="1">Java</option>
+                <option value="2">Spring</option>
+                <option value="3">OOP</option>
+            </select>
         </div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+        <div class="col-md-12">
+            <label for="message" class="form-label">feedback</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
         </div>
-    </div>
+        <div class="col-md-12 mt-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
 </div>
-
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

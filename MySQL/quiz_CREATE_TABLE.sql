@@ -49,7 +49,7 @@ CREATE TABLE choice(
     option_content VARCHAR(200),
     is_correct TINYINT(1));
 
-CREATE TABLE contract(
+CREATE TABLE contact(
 	contract_id INT PRIMARY KEY, 
     first_name VARCHAR(20),
     last_name VARCHAR(20),

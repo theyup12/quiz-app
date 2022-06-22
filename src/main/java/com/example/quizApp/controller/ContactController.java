@@ -1,7 +1,7 @@
 package com.example.quizApp.controller;
 
-import com.example.quizApp.domain.ContractDomain;
-import com.example.quizApp.entity.Contract;
+import com.example.quizApp.domain.ContactDomain;
+import com.example.quizApp.entity.Contact;
 import com.example.quizApp.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +19,14 @@ public class ContactController {
 
     @GetMapping("/contact")
     public String showUser(Model model){
-        Contract contract = new Contract();
-        model.addAttribute("contract", contract);
-        return "contract";
+        Contact contact = new Contact();
+        model.addAttribute("contact", contact);
+        return "contact";
     }
 
     @PostMapping("/contact")
-    public String registerUser(@ModelAttribute("contract")@Valid ContractDomain contractDomain, Model model){
-        contactService.saveContract(contractDomain);
+    public String registerUser(@ModelAttribute("contact")@Valid ContactDomain contactDomain, Model model){
+        contactService.saveContact(contactDomain);
         return "redirect:/home";
     }
 }

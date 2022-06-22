@@ -12,12 +12,12 @@ import java.io.Serializable;
 @ToString
 @Builder
 @Entity
-@Table(name = "contract")
-public class Contract implements Serializable {
+@Table(name = "contact")
+public class Contact implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "contract_id")
-    private int contractId;
+    @Column(name = "contact_id")
+    private int contactId;
 
     @Column(name="first_name")
     private String firstName;
@@ -25,9 +25,9 @@ public class Contract implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "contract_email")
+    @Column(name = "contact_email")
     private String email;
 
-    @Column(name = "contract_message")
+    @Column(name = "contact_message")
     private String message;
 }

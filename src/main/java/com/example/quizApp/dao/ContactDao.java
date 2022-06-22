@@ -1,7 +1,7 @@
 package com.example.quizApp.dao;
 
-import com.example.quizApp.domain.ContractDomain;
-import com.example.quizApp.entity.Contract;
+import com.example.quizApp.domain.ContactDomain;
+import com.example.quizApp.entity.Contact;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +17,14 @@ public class ContactDao {
         return sessionFactory.getCurrentSession();
     }
 
-    public void saveContractInfo(ContractDomain contractDomain) {
+    public void saveContactInfo(ContactDomain contactDomain) {
         Session currentSession = getCurrentSession();
-        Contract newContract = Contract.builder()
-                .firstName(contractDomain.getFirstName())
-                .lastName(contractDomain.getLastName())
-                .email(contractDomain.getEmail())
-                .message(contractDomain.getMessage())
+        Contact newContact = Contact.builder()
+                .firstName(contactDomain.getFirstName())
+                .lastName(contactDomain.getLastName())
+                .email(contactDomain.getEmail())
+                .message(contactDomain.getMessage())
                 .build();
-        currentSession.persist(newContract);
+        currentSession.persist(newContact);
     }
 }

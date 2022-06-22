@@ -30,7 +30,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/feedback">Feedback</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact Us</a>
                 </li>
             </ul>
         </div>

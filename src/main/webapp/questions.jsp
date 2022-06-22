@@ -43,6 +43,8 @@
                 </c:forEach>
             </tr>
         </table>
+        <button type="submit" class="btn btn-primary" id = "previous" name="action" value="previous">Previous</button>
+        <button type="submit" class="btn btn-primary" id = "next" name="action" value="next">Next</button>
     </div>
 </form>
 
