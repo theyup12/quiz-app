@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -41,4 +43,9 @@ public class User implements Serializable {
     @Column(name = "is_admin")
     private Byte isAdmin;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
+    private Set<Feedback> feedbacks;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
+    private Set<Quiz> quizzes;
 }

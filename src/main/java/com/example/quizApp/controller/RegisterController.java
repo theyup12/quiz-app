@@ -27,6 +27,6 @@ public class RegisterController {
     @PostMapping("/registerUser")
     public String registerUser(@ModelAttribute("user")@Valid UserRegisterDomain userRegisterDomain, Model model){
         userService.saveUser(userRegisterDomain);
-        return "redirect:/list-user";
+        return "redirect:/login";
     }
 }

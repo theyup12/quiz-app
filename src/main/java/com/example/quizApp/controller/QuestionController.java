@@ -18,13 +18,16 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping("/show-questions")
+    @GetMapping("/quiz")
     public String listQuestions(@RequestParam("categoryId")Integer categoryId, Model model){
         List<Question> questionsList = questionService.getQuestionsWithType(categoryId);
-        System.out.println(questionsList.get(1).getQuestionId());
         model.addAttribute("questionsList", questionsList);
         model.addAttribute("index", 0);
         return "questions";
     }
-//    @PostMapping("/")
+    @PostMapping("/quiz")
+    public String nextQuizQuestion(@RequestParam("action") String action, @RequestParam Integer index, Model model){
+        model.addAttribute("index", action);
+        return "questions";
+    }
 }

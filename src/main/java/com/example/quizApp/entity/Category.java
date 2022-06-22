@@ -26,6 +26,9 @@ public class Category implements Serializable {
     @Column(name = "category_description")
     private String description;
 
+    @OneToOne(mappedBy = "category")
+    private Quiz quiz;
+
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
     private Set<Question> questions = new HashSet<>();
 }

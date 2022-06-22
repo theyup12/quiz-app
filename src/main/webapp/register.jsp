@@ -37,7 +37,7 @@
                 <form:input id="InputPhone" type="phone" class="form-control" path="phone" placeholder="Enter Phone"/>
             </div>
             <div class="form-group">
-                <label for="InputPassword">First name:</label>
+                <label for="InputPassword">Password:</label>
                 <form:input id="InputPassword" type="password" class="form-control" path="password" placeholder="Enter Password"/>
             </div>
             <input class="btn btn-primary" type="submit" value="Save" class="save"/>

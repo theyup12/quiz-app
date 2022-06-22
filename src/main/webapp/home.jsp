@@ -20,7 +20,7 @@
     </div>
     <div class="row">
             <c:forEach var="category" items="${categories}">
-            <c:url var="questionsLink" value="/show-questions">
+            <c:url var="questionsLink" value="/quiz">
                 <c:param name = "categoryId" value="${category.getCategoryId()}"></c:param>
             </c:url>
                 <div class="col-sm-4">
