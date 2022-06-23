@@ -14,6 +14,9 @@
 
 </head>
 <body>
+<div class="text-center">
+    <h2>Sign In</h2>
+</div>
 <div class = "container">
     <form:form action="/user-login" modelAttribute="userLogin" method="post" style="max-width:480px;margin:auto">
         <div class="form-group">

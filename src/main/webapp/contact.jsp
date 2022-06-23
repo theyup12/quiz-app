@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: andycao
@@ -17,27 +18,27 @@
 
 <div class="container mt-5">
     <h1>Contact Me!</h1>
-    <form class="row g-2" action="">
+    <form:form class="row g-2" action="/contact" modelAttribute="contact" method="post">
         <div class="col-md-6">
-            <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" required>
+            <label for="inputfirstName" class="form-label">First Name</label>
+            <form:input id="inputfirstName" type="text" class="form-control" path="firstName" placeholder="Enter First Name"/>
         </div>
         <div class="col-md-6">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" required>
+            <label for="inputlastName" class="form-label">Last Name</label>
+            <form:input id="inputlastName" type="text" class="form-control" path="lastName" placeholder="Enter Last Name"/>
         </div>
         <div class="col-md-12">
-            <label for="emailInfo" class="form-label">Email</label>
-            <input type="email" class="form-control" id="emailInfo" required>
+            <label for="inputEmail" class="form-label">Email</label>
+            <form:input id="inputEmail" type="email" class="form-control" path="email" placeholder="Enter Email Address"/>
         </div>
         <div class="col-md-12">
-            <label for="message" class="form-label">Leave a Message</label>
-            <textarea class="form-control" id="message" rows="3"></textarea>
+            <label for="inputMessage" class="form-label">Leave a Message</label>
+            <form:textarea id="inputMessage" type="text" class="form-control" path="message" rows="3" placeholder="leave some messages"/>
         </div>
         <div class="col-md-12 mt-3">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input class="btn btn-primary" type="submit" value="Save" class="save"/>
         </div>
-    </form>
+    </form:form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

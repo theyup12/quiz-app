@@ -15,7 +15,7 @@
 <body>
 <%@include file="nav.jsp"%>
 <div class="container mt-5">
-    <h1>Contact Me!</h1>
+    <h1>Give Feedback For the Quiz</h1>
     <form class="row g-2">
         <div class="col-md-12">
             <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label>

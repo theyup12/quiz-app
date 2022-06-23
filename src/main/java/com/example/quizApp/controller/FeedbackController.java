@@ -26,7 +26,7 @@ public class FeedbackController {
         return "feedback";
     }
 
-//    @PostMapping("/submitted-feedback")
+//    @PostMapping("/feedback")
 //    public String registerUser(@ModelAttribute("feedback")@Valid FeedbackDomain feedbackDomain, Model model){
 //        feedbackService.submitFeedback(feedbackDomain);
 //        return "feedback";
