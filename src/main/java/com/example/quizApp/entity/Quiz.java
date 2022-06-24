@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -35,4 +36,7 @@ public class Quiz implements Serializable {
 
     @Column(name="finish_time")
     private String finishTime;
+
+    @OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
+    private Set<QuizResult> quizResults;
 }

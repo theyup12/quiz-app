@@ -18,4 +18,21 @@ public class QuizResult {
     @Column(name = "quiz_result_id")
     private int quizResultId;
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "question_id")
+    private Question question;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "choice_id")
+    private Choice choice;
+
+    @Column(name = "order_num")
+    private int order;
+
+    @Column(name = "is_marked")
+    private Byte isMarked;
 }

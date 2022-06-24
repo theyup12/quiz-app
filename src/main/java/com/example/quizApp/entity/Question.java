@@ -33,4 +33,7 @@ public class Question implements Serializable {
 
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
     private List<Choice> choices;
+
+    @OneToOne(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private QuizResult quizResult;
 }
