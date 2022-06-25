@@ -26,7 +26,7 @@ public class LoginController {
         HttpSession oldSession = request.getSession(false);
         if(oldSession != null){
             if(oldSession.getAttribute("user") != null){
-                return "redirect:/home";
+                return "redirect:/online-quiz/home";
             }else{
                 model.addAttribute("error", "");
                 model.addAttribute("userLogin", new LoginDomain());
@@ -56,7 +56,7 @@ public class LoginController {
                 HttpSession newSession = request.getSession(true);
                 newSession.setAttribute("user", user);
                 model.addAttribute("user", user);
-                return "redirect:/home";
+                return "redirect:/online-quiz/home";
             } else{
                 if (oldSession != null) {
                     oldSession.invalidate();

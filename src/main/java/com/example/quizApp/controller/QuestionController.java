@@ -6,10 +6,7 @@ import com.example.quizApp.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +14,8 @@ import java.util.Optional;
 
 @SessionAttributes({"questionsList", "index", "answerArray", "startTime"})
 @Controller
+@RequestMapping("/online-quiz")
+
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
@@ -47,7 +46,7 @@ public class QuestionController {
         }else if(action.equals("next")){
             model.addAttribute("index", index + 1);
         }else if(action.equals("finish")) {
-            return "redirect:/home";
+            return "redirect:/online-quiz/home";
         }else{
             model.addAttribute("index", action);
         }

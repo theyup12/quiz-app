@@ -18,11 +18,13 @@
 <%@include file="nav.jsp"%>
     <div id="header">
         <h2>Categories</h2>
-<%--        <p>Welcome <c:out value="${user.getName()}"/></p>--%>
+        <c:if test="${user != null}">
+            <p>Welcome <c:out value="${userName}"/></p>
+        </c:if>
     </div>
     <div class="row">
             <c:forEach var="category" items="${categories}">
-            <c:url var="questionsLink" value="/quiz">
+            <c:url var="questionsLink" value="/online-quiz/quiz">
                 <c:param name = "categoryId" value="${category.getCategoryId()}"></c:param>
             </c:url>
                 <div class="col-sm-4">

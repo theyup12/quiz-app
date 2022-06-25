@@ -20,7 +20,7 @@
             <p>Thank you for taking the quiz.Your answers are submitted successfully, you can review the quiz in the home page</p>
         </div>
         <div class="col-md-12 text-center">
-            <a href="${pageContext.request.contextPath}/home" class="btn btn-primary">Return to Home</a>
+            <a href="${pageContext.request.contextPath}/online-quiz/home" class="btn btn-primary">Return to Home</a>
         </div>
 </div>
 
