@@ -2,13 +2,13 @@ package com.example.quizApp.services;
 
 import com.example.quizApp.dao.ChoiceDao;
 import com.example.quizApp.dao.QuestionDao;
-import com.example.quizApp.entity.Choice;
 import com.example.quizApp.entity.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service("questionService")
@@ -24,5 +24,10 @@ public class QuestionService {
 
         return curr;
 
+    }
+    public String getTime(){
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        Date date = new Date();
+        return formatter.format(date);
     }
 }

@@ -24,7 +24,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/">Login</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/user-login">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/feedback">Feedback</a>
@@ -33,6 +33,8 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact Us</a>
                 </li>
             </ul>
+            <a class="nav-link" href="${pageContext.request.contextPath}/logout">Log Out</a>
+
         </div>
     </nav>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -1,6 +1,7 @@
 package com.example.quizApp.controller;
 
 import com.example.quizApp.entity.Question;
+import com.example.quizApp.services.CategoryService;
 import com.example.quizApp.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,18 +15,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@SessionAttributes({"questionsList", "index", "answerArray"})
+@SessionAttributes({"questionsList", "index", "answerArray", "startTime"})
 @Controller
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
-
+    @Autowired
+    private CategoryService categoryService;
     @GetMapping("/quiz")
     public String listQuestions(@RequestParam("categoryId")Integer categoryId, Model model){
         List<Question> questionsList = questionService.getQuestionsWithType(categoryId);
+        model.addAttribute("categoryName", categoryService.getCategoryNameById(categoryId));
         model.addAttribute("questionsList", questionsList);
         model.addAttribute("index", 0);
         model.addAttribute("answerArray", new Integer[10]);
+        model.addAttribute("startTime", questionService.getTime());
         return "questions";
     }
     @PostMapping("/quiz")
@@ -49,4 +53,11 @@ public class QuestionController {
         }
         return "questions";
     }
+
+//    @PostMapping("/submit-quiz")
+//    public String submitQuiz(Model model){
+//        String endTime = questionService.getTime();
+//
+//        return "submit";
+//    }
 }

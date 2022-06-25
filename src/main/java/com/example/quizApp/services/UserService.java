@@ -1,6 +1,7 @@
 package com.example.quizApp.services;
 
 import com.example.quizApp.dao.UserDao;
+import com.example.quizApp.domain.LoginDomain;
 import com.example.quizApp.domain.UserRegisterDomain;
 import com.example.quizApp.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,25 @@ public class UserService {
     }
 
     @Transactional
-    public void saveUser(UserRegisterDomain userRegisterDomain){
-        userDao.saveOneUser(userRegisterDomain);
+    public boolean saveUser(UserRegisterDomain userRegisterDomain){
+        boolean isExisted = checkUserByEmail(userRegisterDomain.getEmail());
+        if(!isExisted){
+            userDao.saveOneUser(userRegisterDomain);
+            return true;
+        }
+        return false;
     }
 
-//    @Transactional
-//    public boolean checkEmail(String email){
-//        userDao.findEmail(email);
-//    }
+    public boolean checkUserByEmail(String email) {
+        return userDao.findUserByEmailAddress(email) != null;
+    }
+    public User checkLogin(LoginDomain loginDomain){
+        if(loginDomain.getEmail() == null && loginDomain.getPassword() == null){
+            return null;
+        }
+        if (checkUserByEmail(loginDomain.getEmail())){
+            return userDao.checkEmailAndPassword(loginDomain);
+        }
+        return null;
+    }
 }

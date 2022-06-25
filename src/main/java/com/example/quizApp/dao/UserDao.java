@@ -1,5 +1,6 @@
 package com.example.quizApp.dao;
 
+import com.example.quizApp.domain.LoginDomain;
 import com.example.quizApp.domain.UserRegisterDomain;
 import com.example.quizApp.entity.User;
 import org.hibernate.Session;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -37,12 +39,30 @@ public class UserDao {
                 .build();
         currentSession.persist(newUser);
     }
-//    public String findEmail(String email){
-//        try{
-//            Session currentSession = getCurrentSession();
-//            Query
-//        }catch (NoResultException exc){
-//            return null;
-//        }
-//    }
+
+    public User findUserByEmailAddress(String email) {
+        try{
+            Session currentSession = getCurrentSession();
+            Query theQuery = currentSession.createQuery("FROM User u WHERE u.email = :email");
+            theQuery.setParameter("email", email);
+            User user = (User) theQuery.getSingleResult();
+            return user;
+        }catch (NoResultException e){
+            System.out.println("No email found");
+            return null;
+        }
+    }
+    public User checkEmailAndPassword(LoginDomain loginDomain){
+        try{
+            Session currentSession = getCurrentSession();
+            Query theQuery = currentSession.createQuery("FROM User u WHERE u.email = :email AND u.password = :password");
+            theQuery.setParameter("email", loginDomain.getEmail());
+            theQuery.setParameter("password", loginDomain.getPassword());
+            User user = (User) theQuery.getSingleResult();
+            return user;
+        }catch (NoResultException e){
+            System.out.println("No email  and password found");
+            return null;
+        }
+    }
 }

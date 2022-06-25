@@ -18,4 +18,9 @@ public class CategoryService  {
     public List<Category> displayCategory(){
         return categoryDao.getCategory();
     }
+
+    @Transactional
+    public String getCategoryNameById(Integer id){
+        return categoryDao.getCategoryName(id);
+    }
 }

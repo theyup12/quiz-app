@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="false" %>
 <html>
 <head>
     <title>Category Page</title>
@@ -17,6 +18,7 @@
 <%@include file="nav.jsp"%>
     <div id="header">
         <h2>Categories</h2>
+<%--        <p>Welcome <c:out value="${user.getName()}"/></p>--%>
     </div>
     <div class="row">
             <c:forEach var="category" items="${categories}">
@@ -24,18 +26,17 @@
                 <c:param name = "categoryId" value="${category.getCategoryId()}"></c:param>
             </c:url>
                 <div class="col-sm-4">
-                    <div class="card" style="flex: auto">
+                    <div class="card h-100" style="">
                         <img src="${pageContext.request.contextPath}/image/${category.getCategoryName()}.png" class="card-img-top" alt="${category.getCategoryName()}">
                             <div class="card-body">
                                 <h4 class="card-title">${category.getCategoryName()}</h4>
-                                <p>${category.getDescription()}</p>
+                                <p class=card-text">${category.getDescription()}</p>
                                 <a href="${questionsLink}" class="btn btn-primary">Start Quiz</a>
                             </div>
                     </div>
                 </div>
             </c:forEach>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

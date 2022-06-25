@@ -21,23 +21,26 @@
     <form:form action="/user-login" modelAttribute="userLogin" method="post" style="max-width:480px;margin:auto">
         <div class="form-group">
             <form:label for="InputEmail" path="email">Email: </form:label>
-            <form:input id="InputEmail" type="email" class="form-control" path="email" placeholder="Enter Email"/>
+            <form:input id="InputEmail" type="email" class="form-control"
+                        path="email" placeholder="Enter Email" required="required"/>
+            <form:errors path="email" style="color:red"/>
         </div class="form-group">
         <div>
             <form:label for="InputPassword" path="password" >Password:</form:label>
-            <form:input id="InputPassword" type="password" class="form-control" path="password" placeholder="Enter Password"/>
+            <form:input id="InputPassword" type="password" class="form-control"
+                        path="password" placeholder="Enter Password" required="required"/>
+            <form:errors path="password" stle="color:red"/>
         </div>
         <div class="mt-3">
             <button class="btn btn-primary btn-lg btn-block" type="submit" value="Login" class="login">Sign In</button>
         </div>
-
+        <div class="mt-3">
+            <a class="btn btn-outline-primary btn-lg btn-block"
+               role="button" href="${pageContext.request.contextPath}/register-new-user">Regiester</a>
+        </div>
 
     </form:form>
-    <div class="mt-3">
-        <input type="button" value="Register"
-               onclick="window.location.href='register-new-user'; return false;"
-               class="add-button"/>
-    </div>
+    <div class="text-danger">${error}</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

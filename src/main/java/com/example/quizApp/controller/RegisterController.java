@@ -26,7 +26,8 @@ public class RegisterController {
 
     @PostMapping("/registerUser")
     public String registerUser(@ModelAttribute("user")@Valid UserRegisterDomain userRegisterDomain, Model model){
-        userService.saveUser(userRegisterDomain);
-        return "redirect:/login";
+        boolean isExisted = userService.saveUser(userRegisterDomain);
+        model.addAttribute("isExisted", isExisted);
+        return "successfullyOrError";
     }
 }

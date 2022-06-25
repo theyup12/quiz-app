@@ -20,23 +20,33 @@
         <form:form action="/registerUser" modelAttribute="user" method="post">
             <div class="form-group">
                 <label for="InputFirstName">First name:</label>
-                <form:input id="InputFirstName" type="text" class="form-control" path="firstName" placeholder="Enter First Name"/>
+                <form:input id="InputFirstName" type="text" class="form-control"
+                            path="firstName" placeholder="Enter First Name" required="required"/>
+                <form:errors path="firstName" style="color:red;"/>
             </div>
             <div class="form-group">
                 <label for="InputLastName">Last name:</label>
-                <form:input id="InputLastName" type="text" class="form-control" path="lastName" placeholder="Enter Last Name"/>
+                <form:input id="InputLastName" type="text" class="form-control"
+                            path="lastName" placeholder="Enter Last Name" required="required"/>
+                <form:errors path="lastName" style="color:red;"/>
             </div>
             <div class="form-group">
                 <label for="InputEmail">Email:</label>
-                <form:input id="InputEmail" type="email" class="form-control" path="email" placeholder="Enter Email"/>
+                <form:input id="InputEmail" type="email" class="form-control"
+                            path="email" placeholder="Enter Email" required="required"/>
+                <form:errors path="email" style="color:red;"/>
             </div>
             <div class="form-group">
                 <label for="InputPhone">Phone:</label>
-                <form:input id="InputPhone" type="phone" class="form-control" path="phone" placeholder="Enter Phone"/>
+                <form:input id="InputPhone" type="phone" class="form-control"
+                            path="phone" placeholder="Enter Phone" required="required"/>
+                <form:errors path="phone" style="color:red;"/>
             </div>
             <div class="form-group">
                 <label for="InputPassword">Password:</label>
-                <form:input id="InputPassword" type="password" class="form-control" path="password" placeholder="Enter Password"/>
+                <form:input id="InputPassword" type="password" class="form-control"
+                            path="password" placeholder="Enter Password" required="required"/>
+                <form:errors path="password" style="color:red;"/>
             </div>
             <input class="btn btn-primary" type="submit" value="Save" class="save"/>
 
