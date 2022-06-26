@@ -19,7 +19,7 @@ public class LoginFilter implements Filter {
         HttpSession oldSession = ((HttpServletRequest)request).getSession(false);
         System.out.println("print from do filter");
         if(oldSession == null || oldSession.getAttribute("user") == null){
-            request.setAttribute("error", "Please Sign In");
+            request.setAttribute("error", "* Please Sign In");
             request.setAttribute("userLogin", new LoginDomain());
             request.getRequestDispatcher(((HttpServletRequest) request).getContextPath()+"/login.jsp").forward(request,response);
 

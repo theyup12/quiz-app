@@ -25,15 +25,11 @@ public class HomeController {
     @GetMapping("/home")
     public String homePage(HttpServletRequest request, Model model){
         HttpSession oldSession = request.getSession(false);
-        if(oldSession != null) {
-            List<Category> categories = categoryService.displayCategory();
-            model.addAttribute("categories", categories);
-            User user = (User) oldSession.getAttribute("user");
-            model.addAttribute("user", user);
-            model.addAttribute("userName", user.getFirstName());
-
-            return "home";
-        }
+        List<Category> categories = categoryService.displayCategory();
+        model.addAttribute("categories", categories);
+        User user = (User) oldSession.getAttribute("user");
+        model.addAttribute("user", user);
+        model.addAttribute("userName", user.getFirstName());
         return "home";
     }
 

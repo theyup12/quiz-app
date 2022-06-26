@@ -1,11 +1,11 @@
 use quiz;
 CREATE TABLE user(
-	user_id INT PRIMARY KEY,
+	user_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(20),
     last_name VARCHAR(20),
     user_email VARCHAR(50),
     user_password VARCHAR(20),
-    user_phone INT,
+    user_phone VARCHAR(20),
     is_active TINYINT(1),
     is_admin TINYINT(1));
 
@@ -15,14 +15,14 @@ CREATE TABLE category(
     category_description VARCHAR(200));
     
 CREATE TABLE feedback(
-	feedback_id INT PRIMARY KEY,
+	feedback_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_id INT,
     review VARCHAR(200),
     rating INT,
     feedback_date DATETIME);
 
 CREATE TABLE quiz(
-	quiz_id INT PRIMARY KEY,
+	quiz_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_id INT,
     category_id INT,
     quiz_name VARCHAR(20),
@@ -50,7 +50,7 @@ CREATE TABLE choice(
     is_correct TINYINT(1));
 
 CREATE TABLE contact(
-	contract_id INT PRIMARY KEY, 
+	contract_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
     first_name VARCHAR(20),
     last_name VARCHAR(20),
     contract_message VARCHAR(200));
