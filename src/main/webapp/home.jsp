@@ -10,16 +10,16 @@
 <%@page session="false" %>
 <html>
 <head>
-    <title>Category Page</title>
+    <title>HomePage</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
 <%@include file="nav.jsp"%>
     <div id="header">
-        <h2>Categories</h2>
+        <h1>Quizzes</h1>
         <c:if test="${user != null}">
-            <p>Welcome <c:out value="${userName}"/></p>
+            <h5>Welcome <c:out value="${userName}"/></h5>
         </c:if>
     </div>
     <div class="row">
@@ -28,7 +28,7 @@
                 <c:param name = "categoryId" value="${category.getCategoryId()}"></c:param>
             </c:url>
                 <div class="col-sm-4">
-                    <div class="card h-100" style="">
+                    <div class="card h-100 shadow border" style="">
                         <img src="${pageContext.request.contextPath}/image/${category.getCategoryName()}.png" class="card-img-top" alt="${category.getCategoryName()}">
                             <div class="card-body">
                                 <h4 class="card-title">${category.getCategoryName()}</h4>

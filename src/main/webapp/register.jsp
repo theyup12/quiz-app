@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div class="text-center">
-        <h2>Register Page</h2>
-    </div>
-    <div class = "container">
+<%@include file="nav.jsp"%>
+    <div class = "container mt-5">
+        <div class="text-center">
+            <h2>Register Page</h2>
+        </div>
         <form:form action="/registerUser" modelAttribute="user" method="post">
             <div class="form-group">
                 <label for="InputFirstName">First name:</label>
@@ -48,12 +49,12 @@
                             path="password" placeholder="Enter Password" required="required"/>
                 <form:errors path="password" style="color:red;"/>
             </div>
-            <input class="btn btn-primary" type="submit" value="Save" class="save"/>
+            <input class="btn btn-primary" type="submit" value="Create Account" class="save"/>
 
         </form:form>
         <div>
             <p>
-                <a href="${pageContext.request.contextPath}/">Back to Login</a>
+                Already have an account? <a href="${pageContext.request.contextPath}/">Log in</a>
             </p>
         </div>
     </div>

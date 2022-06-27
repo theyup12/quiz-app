@@ -2,7 +2,6 @@ package com.example.quizApp.controller;
 
 import com.example.quizApp.entity.Category;
 import com.example.quizApp.entity.Question;
-import com.example.quizApp.entity.Quiz;
 import com.example.quizApp.entity.User;
 import com.example.quizApp.services.CategoryService;
 import com.example.quizApp.services.QuestionService;
@@ -16,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@SessionAttributes({"questionsList", "index", "answerArray", "startTime"})
+@SessionAttributes({"user", "questionsList", "index", "answerArray", "startTime", "category"})
 @Controller
 @RequestMapping("/online-quiz")
 public class QuestionController {
@@ -35,11 +34,13 @@ public class QuestionController {
         model.addAttribute("index", 0);
         model.addAttribute("answerArray", new Integer[10]);
         model.addAttribute("startTime", questionService.getTime());
+
         return "questions";
     }
     @PostMapping("/quiz")
     public String nextQuizQuestion(@RequestParam("action") String action,
-                                   @RequestParam("input") Optional<Integer> input, @RequestParam Integer index, Model model){
+                                   @RequestParam("input") Optional<Integer> input,
+                                   @RequestParam Integer index, Model model){
         Integer[] answer = (Integer[]) model.getAttribute("answerArray");
         if(input.isPresent()){
             assert answer != null;
@@ -58,12 +59,13 @@ public class QuestionController {
         }
         return "questions";
     }
-
-    @PostMapping("/submit-quiz")
-    public String submitQuiz(@RequestParam("category") Category category, Model model){
+    @GetMapping("/submit-quiz")
+    public String submitQuiz(Model model){
         String endTime = questionService.getTime();
         Integer userId = ((User)model.getAttribute("user")).getUserId();
-        Integer categoryId = category.getCategoryId();
+        System.out.println(userId);
+        Integer categoryId = ((Category)model.getAttribute("category")).getCategoryId();
+        System.out.println(categoryId);
         String startTime = (String)model.getAttribute("startTime");
         quizService.saveQuiz(userId, categoryId, startTime, endTime);
         return "submit";

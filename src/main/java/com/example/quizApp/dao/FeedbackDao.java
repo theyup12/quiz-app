@@ -19,7 +19,7 @@ public class FeedbackDao {
 
     public void saveFeedback(FeedbackDomain feedbackDomain, Integer user_id, String date){
         Session currentSession = getCurrentSession();
-        Query theQuery = currentSession.createQuery("From User u WHERE u.user_id = :id");
+        Query theQuery = currentSession.createQuery("From User u WHERE u.userId = :id");
         theQuery.setParameter("id", user_id);
         User user = (User)theQuery.getSingleResult();
         Feedback newFeedback = Feedback.builder()

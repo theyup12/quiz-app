@@ -14,21 +14,22 @@
 
 </head>
 <body>
-<div class="text-center ">
-    <h2>Sign In</h2>
-</div>
-<div class = "container">
+<%@include file="nav.jsp"%>
+<div class = "container mt-5">
+    <div class="text-center ">
+        <h2>User Login</h2>
+    </div>
     <form:form action="/user-login" modelAttribute="userLogin" method="post" style="max-width:480px;margin:auto">
         <div class="form-group">
-            <form:label for="InputEmail" path="email">Email: </form:label>
+            <form:label for="InputEmail" path="email">Email*</form:label>
             <form:input id="InputEmail" type="email" class="form-control"
-                        path="email" placeholder="Enter Email" required="required"/>
+                        path="email" placeholder="name@mail.com" required="required"/>
             <form:errors path="email" style="color:red"/>
         </div class="form-group">
         <div>
-            <form:label for="InputPassword" path="password" >Password:</form:label>
+            <form:label for="InputPassword" path="password" >Password*</form:label>
             <form:input id="InputPassword" type="password" class="form-control"
-                        path="password" placeholder="Enter Password" required="required"/>
+                        path="password" placeholder="Enter your password" required="required"/>
             <form:errors path="password" stle="color:red"/>
         </div>
         <div class="mt-3">

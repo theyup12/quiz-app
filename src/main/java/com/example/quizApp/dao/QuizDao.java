@@ -25,7 +25,7 @@ public class QuizDao {
         Query getCategory = currentSession.createQuery("From Category c WHere c.categoryId = :id ");
         getCategory.setParameter("id", categoryId);
         Quiz newQuiz = Quiz.builder()
-                .category((Category) getCategory.getSingleResult())
+                .category((Category) getCategory.  getSingleResult())
                 .user(((User)getUser.getSingleResult()))
                 .startTime(startTime)
                 .finishTime(endTime)
