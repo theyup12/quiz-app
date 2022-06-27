@@ -22,10 +22,10 @@ public class CategoryDao {
         List<Category> categories = theQuery.getResultList();
         return categories;
     }
-    public String getCategoryName(Integer id){
+    public Category getSingleCategory(Integer id){
         Session session = getCurrentSession();
         Query theQuery = session.createQuery("From Category  c WHERE c.categoryId = :id");
         theQuery.setParameter("id", id);
-        return ((Category)theQuery.getSingleResult()).getCategoryName();
+        return ((Category)theQuery.getSingleResult());
     }
 }

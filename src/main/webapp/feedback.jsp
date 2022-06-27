@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: andycao
@@ -17,35 +19,36 @@
 <%@include file="nav.jsp"%>
 <div class="container mt-5">
     <h1>Give Feedback For the Quiz</h1>
-    <form class="row g-2">
+    <c:form class="row g-2" action="/online-quiz/feedback" modelAttribute="feedback" method="post">
         <div class="col-md-12">
             <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label>
-            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                <option selected>Choose...</option>
-                <option value="1">Java</option>
-                <option value="2">Spring</option>
-                <option value="3">OOP</option>
-            </select>
+            <form:select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" path="type">
+                <form:option selected="selected" value="">Choose...</form:option>
+                <form:option value="JAVA">Java</form:option>
+                <form:option value="SPRING">Spring</form:option>
+                <form:option value="OOP">OOP</form:option>
+            </form:select>
         </div>
         <div class="col-md-12">
-            <label for="message" class="form-label">feedback</label>
-            <textarea class="form-control" id="message" rows="3"></textarea>
+            <label class="my-1 mr-2" for="rating">Rating</label>
+            <form:select class="custom-select my-1 mr-sm-2" id="rating" path="rating">
+                <form:option selected="selected" value="">Choose...</form:option>
+                <form:option value="1">1 - Extremely Poor</form:option>
+                <form:option value="2">2 - Bad</form:option>
+                <form:option value="3">3 - Average</form:option>
+                <form:option value="4">4 - Good</form:option>
+                <form:option value="5">5 - Excellent</form:option>
+            </form:select>
+        </div>
+        <div class="col-md-12">
+            <label for="inputMessage" class="form-label">Leave a Message</label>
+            <form:textarea id="inputMessage" type="text" class="form-control" path="review" rows="3" placeholder="leave some messages"/>
         </div>
         <div class="col-md-12 mt-3">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" class="btn btn-primary" value="Submit"/>
         </div>
-    </form>
+    </c:form>
 </div>
-<script>
-    export default {
-        name:"App",
-        data() {
-            return {
-                value: null
-            };
-        }
-    };
-</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

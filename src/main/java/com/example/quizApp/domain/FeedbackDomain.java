@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FeedbackDomain {
+    public String type;
+    public Integer rating;
     public String review;
-    public int rating;
-    public String date;
 }

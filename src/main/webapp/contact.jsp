@@ -18,7 +18,7 @@
 
 <div class="container mt-5">
     <h1>Contact Me!</h1>
-    <form:form class="row g-2" action="/contact" modelAttribute="contact" method="post">
+    <form:form class="row g-2" action="/online-quiz/contact" modelAttribute="contact" method="post">
         <div class="col-md-6">
             <label for="inputfirstName" class="form-label">First Name</label>
             <form:input id="inputfirstName" type="text" class="form-control" path="firstName" placeholder="Enter First Name"/>
@@ -36,7 +36,7 @@
             <form:textarea id="inputMessage" type="text" class="form-control" path="message" rows="3" placeholder="leave some messages"/>
         </div>
         <div class="col-md-12 mt-3">
-            <input class="btn btn-primary" type="submit" value="Save" class="save"/>
+            <input class="btn btn-primary" type="submit" value="Save"/>
         </div>
     </form:form>
 </div>

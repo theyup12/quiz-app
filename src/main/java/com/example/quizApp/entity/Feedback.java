@@ -19,15 +19,18 @@ public class Feedback implements Serializable {
     @Column(name = "feedback_id")
     private int feedbackId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "review")
     private String review;
 
+    @Column(name="quiz_type")
+    private String type;
+
     @Column(name="rating")
-    private int rating;
+    private Integer rating;
 
     @Column(name = "feedback_date")
     private String date;

@@ -1,8 +1,12 @@
 package com.example.quizApp.controller;
 
+import com.example.quizApp.entity.Category;
 import com.example.quizApp.entity.Question;
+import com.example.quizApp.entity.Quiz;
+import com.example.quizApp.entity.User;
 import com.example.quizApp.services.CategoryService;
 import com.example.quizApp.services.QuestionService;
+import com.example.quizApp.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,16 +19,18 @@ import java.util.Optional;
 @SessionAttributes({"questionsList", "index", "answerArray", "startTime"})
 @Controller
 @RequestMapping("/online-quiz")
-
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private QuizService quizService;
     @GetMapping("/quiz")
     public String listQuestions(@RequestParam("categoryId")Integer categoryId, Model model){
         List<Question> questionsList = questionService.getQuestionsWithType(categoryId);
-        model.addAttribute("categoryName", categoryService.getCategoryNameById(categoryId));
+        model.addAttribute("category", categoryService.getCategoryById(categoryId));
         model.addAttribute("questionsList", questionsList);
         model.addAttribute("index", 0);
         model.addAttribute("answerArray", new Integer[10]);
@@ -46,17 +52,20 @@ public class QuestionController {
         }else if(action.equals("next")){
             model.addAttribute("index", index + 1);
         }else if(action.equals("finish")) {
-            return "redirect:/online-quiz/home";
+            return "redirect:/online-quiz/submit-quiz";
         }else{
             model.addAttribute("index", action);
         }
         return "questions";
     }
 
-//    @PostMapping("/submit-quiz")
-//    public String submitQuiz(Model model){
-//        String endTime = questionService.getTime();
-//
-//        return "submit";
-//    }
+    @PostMapping("/submit-quiz")
+    public String submitQuiz(@RequestParam("category") Category category, Model model){
+        String endTime = questionService.getTime();
+        Integer userId = ((User)model.getAttribute("user")).getUserId();
+        Integer categoryId = category.getCategoryId();
+        String startTime = (String)model.getAttribute("startTime");
+        quizService.saveQuiz(userId, categoryId, startTime, endTime);
+        return "submit";
+    }
 }

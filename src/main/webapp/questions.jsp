@@ -19,13 +19,13 @@
 </head>
 <body>
     <div class="text-center">
-        <h2>${categoryName} Quiz</h2>
+        <h2>${category.getCategoryName()} Quiz</h2>
     </div>
     <div>
         <p>${startTime}</p>
         <p id ="countdown"></p>
     </div>
-<form action="${pageContext.request.contextPath}/quiz?index=${index}" method="post">
+<form action="${pageContext.request.contextPath}/online-quiz/quiz?index=${index}" method="post">
     <div id="container">
         <div class="btn-group" role="group">
             <c:forEach begin="0" end="9" varStatus="loop">

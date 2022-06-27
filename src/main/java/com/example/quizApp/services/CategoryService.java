@@ -20,7 +20,7 @@ public class CategoryService  {
     }
 
     @Transactional
-    public String getCategoryNameById(Integer id){
-        return categoryDao.getCategoryName(id);
+    public Category getCategoryById(Integer id){
+        return categoryDao.getSingleCategory(id);
     }
 }

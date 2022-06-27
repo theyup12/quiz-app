@@ -29,6 +29,6 @@ public class ContactController {
     @PostMapping("/contact")
     public String registerUser(@ModelAttribute("contact")@Valid ContactDomain contactDomain, Model model){
         contactService.saveContact(contactDomain);
-        return "redirect:/online-quiz/home";
+        return "submit";
     }
 }

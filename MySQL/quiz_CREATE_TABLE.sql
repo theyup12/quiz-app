@@ -18,19 +18,19 @@ CREATE TABLE feedback(
 	feedback_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_id INT,
     review VARCHAR(200),
+	quiz_type VARCHAR(20),
     rating INT,
-    feedback_date DATETIME);
+    feedback_date VARCHAR(30));
 
 CREATE TABLE quiz(
 	quiz_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_id INT,
     category_id INT,
-    quiz_name VARCHAR(20),
-    start_time DATETIME,
-    finish_time DATETIME);
+    start_time VARCHAR(30),
+    finish_time VARCHAR(30));
 
 CREATE TABLE quiz_result(
-	quiz_result_id INT PRIMARY KEY,
+	quiz_result_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     quiz_id INT,
     question_id INT,
     choice_id INT,
@@ -50,7 +50,8 @@ CREATE TABLE choice(
     is_correct TINYINT(1));
 
 CREATE TABLE contact(
-	contract_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+	contact_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
     first_name VARCHAR(20),
     last_name VARCHAR(20),
-    contract_message VARCHAR(200));
+	contact_email VARCHAR(50),
+    contact_message VARCHAR(200));

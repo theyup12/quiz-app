@@ -28,9 +28,6 @@ public class Quiz implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name="quiz_name")
-    private String name;
-
     @Column(name="start_time")
     private String startTime;
 

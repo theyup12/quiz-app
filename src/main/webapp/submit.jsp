@@ -16,8 +16,8 @@
 <%@include file="nav.jsp"%>
 <div class="container mt-5">
         <div class="col-md-12 text-center">
-            <h3 class="font-weight-bold">Quiz Completed</h3>
-            <p>Thank you for taking the quiz.Your answers are submitted successfully, you can review the quiz in the home page</p>
+            <h3 class="font-weight-bold">Submit Completed</h3>
+            <p>Thank you for submitting. You can now go back to the home page</p>
         </div>
         <div class="col-md-12 text-center">
             <a href="${pageContext.request.contextPath}/online-quiz/home" class="btn btn-primary">Return to Home</a>
