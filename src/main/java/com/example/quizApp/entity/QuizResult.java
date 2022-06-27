@@ -31,7 +31,7 @@ public class QuizResult {
     private Choice choice;
 
     @Column(name = "order_num")
-    private int order;
+    private Integer order;
 
     @Column(name = "is_marked")
     private Byte isMarked;

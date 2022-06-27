@@ -18,18 +18,26 @@ public class QuizDao {
     protected SessionFactory sessionFactory;
     protected final Session getCurrentSession(){return sessionFactory.getCurrentSession();}
 
-    public void saveQuizData(Integer userId, Integer categoryId, String startTime, String endTime) {
+    public Quiz saveQuizData(Integer userId, Integer categoryId, String startTime, String endTime) {
         Session currentSession = getCurrentSession();
         Query getUser = currentSession.createQuery("FROM User u WHERE u.userId = :id");
         getUser.setParameter("id", userId);
         Query getCategory = currentSession.createQuery("From Category c WHere c.categoryId = :id ");
         getCategory.setParameter("id", categoryId);
         Quiz newQuiz = Quiz.builder()
-                .category((Category) getCategory.  getSingleResult())
+                .category((Category) getCategory.getSingleResult())
                 .user(((User)getUser.getSingleResult()))
                 .startTime(startTime)
                 .finishTime(endTime)
                 .build();
         currentSession.persist(newQuiz);
+        return newQuiz;
+    }
+
+    public Quiz getQuizById(int quizId) {
+        Session currentSession = getCurrentSession();
+        Query query = currentSession.createQuery("From Quiz q where q.quizId =:id");
+        query.setParameter("id", quizId);
+        return (Quiz) query.getSingleResult();
     }
 }

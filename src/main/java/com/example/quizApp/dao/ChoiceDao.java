@@ -1,6 +1,7 @@
 package com.example.quizApp.dao;
 
 import com.example.quizApp.entity.Choice;
+import com.example.quizApp.entity.Quiz;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,11 @@ public class ChoiceDao {
         theQuery.setParameter("questionId", questionId);
         List<Choice> choices = theQuery.getResultList();
         return choices;
+    }
+
+    public Choice getChoicesById(Integer id) {
+        Session currentSession = getCurrentSession();
+        Query theQuery = currentSession.createQuery("From Choice c Where c.choiceId = :id");
+        return (Choice) theQuery.getSingleResult();
     }
 }

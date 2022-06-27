@@ -1,10 +1,9 @@
 package com.example.quizApp.controller;
 
-import com.example.quizApp.entity.Category;
-import com.example.quizApp.entity.Question;
-import com.example.quizApp.entity.User;
+import com.example.quizApp.entity.*;
 import com.example.quizApp.services.CategoryService;
 import com.example.quizApp.services.QuestionService;
+import com.example.quizApp.services.QuizResultService;
 import com.example.quizApp.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +23,8 @@ public class QuestionController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private QuizResultService quizResultService;
     @Autowired
     private QuizService quizService;
     @GetMapping("/quiz")
@@ -67,7 +68,11 @@ public class QuestionController {
         Integer categoryId = ((Category)model.getAttribute("category")).getCategoryId();
         System.out.println(categoryId);
         String startTime = (String)model.getAttribute("startTime");
-        quizService.saveQuiz(userId, categoryId, startTime, endTime);
+        Quiz quiz = quizService.saveQuiz(userId, categoryId, startTime, endTime);
+        List<Question> questions = (List<Question>) model.getAttribute("questionsList");
+        Integer[] answerArray = (Integer[]) model.getAttribute("answerArray");
+        quizResultService.saveQuizResult(quiz.getQuizId(), questions, answerArray);
+
         return "submit";
     }
 }

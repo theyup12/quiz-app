@@ -13,7 +13,7 @@ public class QuizService {
     private QuizDao quizDao;
 
     @Transactional
-    public void saveQuiz(Integer userId, Integer categoryId, String startTime, String endTime) {
-        quizDao.saveQuizData(userId, categoryId, startTime, endTime);
+    public Quiz saveQuiz(Integer userId, Integer categoryId, String startTime, String endTime) {
+        return quizDao.saveQuizData(userId, categoryId, startTime, endTime);
     }
 }
