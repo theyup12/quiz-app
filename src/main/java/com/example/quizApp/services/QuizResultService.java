@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -26,11 +27,14 @@ public class QuizResultService {
         //is_marked = false;
         QuizResult quizResult;
         Quiz quiz = quizDao.getQuizById(quizId);
+        List<Integer> correctChoices= choiceDao.getChoicesByQuestions(questions);
+        System.out.println(correctChoices);
         for(int i = 0; i < 10; i++){
             quizResult = QuizResult.builder()
                     .quiz(quiz)
                     .question(questions.get(i))
-                    .choice(choiceDao.getChoicesById(answerArray[i]))
+                    .userChoice(answerArray[i])
+                    .correctChoice(correctChoices.get(i))
                     .order(i)
                     .isMarked((byte) 0)
                     .build();

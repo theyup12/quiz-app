@@ -29,7 +29,7 @@ public class UserService {
         }
         return false;
     }
-
+    @Transactional
     public boolean checkUserByEmail(String email) {
         return userDao.findUserByEmailAddress(email) != null;
     }

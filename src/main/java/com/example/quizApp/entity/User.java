@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -44,8 +45,8 @@ public class User implements Serializable {
     private Byte isAdmin;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
-    private Set<Feedback> feedbacks;
+    private Set<Feedback> feedbacks = new HashSet<>();
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
-    private Set<Quiz> quizzes;
+    private Set<Quiz> quizzes = new HashSet<>();
 }

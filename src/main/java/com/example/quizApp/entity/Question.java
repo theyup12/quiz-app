@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,8 +33,8 @@ public class Question implements Serializable {
     private String status;
 
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
-    private List<Choice> choices;
+    private List<Choice> choices = new ArrayList<>();
 
-    @OneToOne(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private QuizResult quizResult;
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private List<QuizResult> quizResult = new ArrayList<>();
 }

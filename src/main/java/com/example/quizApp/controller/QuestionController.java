@@ -64,14 +64,15 @@ public class QuestionController {
     public String submitQuiz(Model model){
         String endTime = questionService.getTime();
         Integer userId = ((User)model.getAttribute("user")).getUserId();
-        System.out.println(userId);
         Integer categoryId = ((Category)model.getAttribute("category")).getCategoryId();
-        System.out.println(categoryId);
         String startTime = (String)model.getAttribute("startTime");
         Quiz quiz = quizService.saveQuiz(userId, categoryId, startTime, endTime);
         List<Question> questions = (List<Question>) model.getAttribute("questionsList");
         Integer[] answerArray = (Integer[]) model.getAttribute("answerArray");
         quizResultService.saveQuizResult(quiz.getQuizId(), questions, answerArray);
+        System.out.println(questions);
+        System.out.println(Arrays.toString(answerArray));
+
 
         return "submit";
     }

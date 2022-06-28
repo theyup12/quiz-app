@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -20,13 +21,14 @@ public class Quiz implements Serializable {
     @Column(name = "quiz_id")
     private int quizId;
 
-    @OneToOne
-    @JoinColumn(name="category_id")
-    private Category category;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
+
 
     @Column(name="start_time")
     private String startTime;
@@ -35,5 +37,5 @@ public class Quiz implements Serializable {
     private String finishTime;
 
     @OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
-    private Set<QuizResult> quizResults;
+    private Set<QuizResult> quizResults = new HashSet<>();
 }

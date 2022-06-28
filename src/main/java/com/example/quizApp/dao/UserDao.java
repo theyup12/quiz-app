@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import javax.persistence.NoResultException;
@@ -18,6 +19,7 @@ public class UserDao {
     @Autowired
     protected SessionFactory sessionFactory;
     protected final Session getCurrentSession(){return sessionFactory.getCurrentSession();}
+    @Transactional
     public List<User> getUsers(){
         // get the current hibernate session
         Session currentSession = getCurrentSession();
@@ -26,6 +28,7 @@ public class UserDao {
         List<User> users = theQuery.getResultList();
         return users;
     }
+    @Transactional
     public void saveOneUser(UserRegisterDomain userRegisterDomain){
         Session currentSession = getCurrentSession();
         User newUser = User.builder()
@@ -39,7 +42,7 @@ public class UserDao {
                 .build();
         currentSession.persist(newUser);
     }
-
+    @Transactional
     public User findUserByEmailAddress(String email) {
         try{
             Session currentSession = getCurrentSession();
@@ -52,6 +55,7 @@ public class UserDao {
             return null;
         }
     }
+    @Transactional
     public User checkEmailAndPassword(LoginDomain loginDomain){
         try{
             Session currentSession = getCurrentSession();

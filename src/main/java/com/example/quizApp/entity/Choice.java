@@ -28,7 +28,4 @@ public class Choice implements Serializable {
 
     @Column(name = "is_correct")
     private Byte isCorrect;
-
-    @OneToOne(mappedBy = "choice", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private QuizResult quizResult;
 }

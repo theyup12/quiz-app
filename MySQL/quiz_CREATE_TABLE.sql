@@ -33,7 +33,8 @@ CREATE TABLE quiz_result(
 	quiz_result_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     quiz_id INT,
     question_id INT,
-    choice_id INT,
+    user_choice INT,
+    correct_choice INT,
     order_num INT,
     is_marked TINYINT(1));
 

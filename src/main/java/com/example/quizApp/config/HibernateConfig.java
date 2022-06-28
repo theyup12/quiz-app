@@ -36,13 +36,12 @@ public class HibernateConfig {
 
         return dataSource;
     }
-
-//    @Bean
-//    public PlatformTransactionManager hibernateTransactionManager(){
-//        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-//        transactionManager.setSessionFactory(sessionFactory().getObject());
-//        return transactionManager;
-//    }
+    @Bean
+    public PlatformTransactionManager hibernateTransactionManager(){
+        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+        transactionManager.setSessionFactory(sessionFactory().getObject());
+        return transactionManager;
+    }
     private final Properties createHibernateProperties(){
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.show_sql", hibernateDbProperty.getShowSql());

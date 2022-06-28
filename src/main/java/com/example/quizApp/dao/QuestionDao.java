@@ -1,5 +1,6 @@
 package com.example.quizApp.dao;
 
+import com.example.quizApp.entity.Choice;
 import com.example.quizApp.entity.Question;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,7 +18,7 @@ public class QuestionDao {
     @Autowired
     protected SessionFactory sessionFactory;
     protected final Session getCurrentSession(){return sessionFactory.getCurrentSession();}
-
+    @Transactional
     public List<Question> getQuestions(Integer categoryId){
         // get the current hibernate session
         Session currentSession = getCurrentSession();

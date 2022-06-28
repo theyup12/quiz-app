@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
 
@@ -17,7 +18,7 @@ public class QuizDao {
     @Autowired
     protected SessionFactory sessionFactory;
     protected final Session getCurrentSession(){return sessionFactory.getCurrentSession();}
-
+    @Transactional
     public Quiz saveQuizData(Integer userId, Integer categoryId, String startTime, String endTime) {
         Session currentSession = getCurrentSession();
         Query getUser = currentSession.createQuery("FROM User u WHERE u.userId = :id");
@@ -33,7 +34,7 @@ public class QuizDao {
         currentSession.persist(newQuiz);
         return newQuiz;
     }
-
+    @Transactional
     public Quiz getQuizById(int quizId) {
         Session currentSession = getCurrentSession();
         Query query = currentSession.createQuery("From Quiz q where q.quizId =:id");
