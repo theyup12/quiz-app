@@ -15,7 +15,6 @@
     <title>Quiz</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 <body>
     <div class="container p-4 my-4 bg-secondary bg-gradient text-white">
@@ -34,8 +33,7 @@
                             </c:forEach>
                         </div>
                         <div class="float-right">
-                            <p>${startTime}</p>
-                            <p id ="countdown"></p>
+                            <p id ="countdown">Time Left: 15:00</p>
                         </div>
                     </div>
                     <div class="card-body">
@@ -61,12 +59,15 @@
                              aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-body">
+                                    <div class="modal-body" style="display:inline">
+<%--                                        <c:if test="${isAnswered}">--%>
+<%--                                            <p>You have not finished all questions,</p>--%>
+<%--                                        </c:if>--%>
                                         <p>Are you sure you want to submit the quiz?</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                        <button type="submit" class="btn btn-primary" id="submitQ" name="action" value="finish">
+                                        <button type="submit" class="btn btn-primary" id="submitQ" onclick="reset_session()" name="action" value="finish">
                                             Submit
                                         </button>
                                     </div>
@@ -78,7 +79,30 @@
             </div>
         </div>
     </form>
-    <script src="js/countdown.js"></script>
+    <script>
+        const startingMinutes = 15;
+        let time = startingMinutes * 60;
+        function countdown(seconds) {
+            seconds = parseInt(sessionStorage.getItem("seconds"))||seconds;
+
+            function tick() {
+                seconds--;
+                sessionStorage.setItem("seconds", seconds)
+                let counter = document.getElementById("countdown");
+                let current_minutes = parseInt(seconds/60);
+                let current_seconds = seconds % 60;
+                counter.innerHTML = "Time Left: " +current_minutes + ":" + (current_seconds < 10 ? "0" : "") + current_seconds;
+                if( seconds > 0 ) {
+                    setTimeout(tick, 1000);
+                }
+            }
+            tick();
+        }
+        countdown(time);
+        function reset_session(){
+            sessionStorage.removeItem("seconds")
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>

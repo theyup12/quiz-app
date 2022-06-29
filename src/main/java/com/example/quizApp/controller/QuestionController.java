@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +35,6 @@ public class QuestionController {
         model.addAttribute("index", 0);
         model.addAttribute("answerArray", new Integer[10]);
         model.addAttribute("startTime", questionService.getTime());
-
         return "questions";
     }
     @PostMapping("/quiz")
@@ -47,6 +47,9 @@ public class QuestionController {
             answer[index] = input.orElseGet(()-> null);
         }
         model.addAttribute("answerArray", answer);
+//        assert answer != null;
+//        boolean isAnswered = Arrays.asList(answer).contains(null);
+//        model.addAttribute("isAnswered", isAnswered);
         if(action.equals("previous")){
             model.addAttribute("index", index - 1);
         }else if(action.equals("next")){
