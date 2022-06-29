@@ -1,6 +1,5 @@
 package com.example.quizApp.dao;
 
-import com.example.quizApp.entity.Choice;
 import com.example.quizApp.entity.Question;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

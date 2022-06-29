@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,8 +28,7 @@ public class QuizResultService {
         //is_marked = false;
         QuizResult quizResult;
         Quiz quiz = quizDao.getQuizById(quizId);
-        List<Integer> correctChoices= choiceDao.getChoicesByQuestions(questions);
-        System.out.println(correctChoices);
+        List<Integer> correctChoices= choiceDao.getCorrectChoicesByQuestions(questions);
         for(int i = 0; i < 10; i++){
             quizResult = QuizResult.builder()
                     .quiz(quiz)
@@ -40,6 +40,18 @@ public class QuizResultService {
                     .build();
             quizResultDao.addQuizResult(quizResult);
         }
+    }
+    @Transactional
+    public List<QuizResult> getResultList(Integer quizId) {
+        return quizResultDao.getResultListByQuizId(quizId);
+    }
+    @Transactional
+    public List<Question> getQuestionList(List<QuizResult> quizResultList) {
+        List<Question> questionList = new ArrayList<>();
+        for(QuizResult quizResult : quizResultList){
+            questionList.add(quizResult.getQuestion());
+        }
+        return questionList;
     }
 }
 

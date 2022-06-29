@@ -2,12 +2,15 @@ package com.example.quizApp.services;
 
 import com.example.quizApp.dao.ChoiceDao;
 import com.example.quizApp.dao.QuestionDao;
+import com.example.quizApp.entity.Choice;
 import com.example.quizApp.entity.Question;
+import com.example.quizApp.entity.QuizResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,5 +32,8 @@ public class QuestionService {
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         Date date = new Date();
         return formatter.format(date);
+    }
+    public List<Integer> getCorrectChoices(List<Question> questions) {
+        return choiceDao.getCorrectChoicesByQuestions(questions);
     }
 }

@@ -15,7 +15,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-@SessionAttributes({"user"})
+
+@SessionAttributes({"user","quizzes"})
 @Controller
 public class LoginController {
     @Autowired

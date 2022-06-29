@@ -32,7 +32,7 @@ public class Question implements Serializable {
     @Column(name = "question_status")
     private String status;
 
-    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade=CascadeType.MERGE)
     private List<Choice> choices = new ArrayList<>();
 
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)

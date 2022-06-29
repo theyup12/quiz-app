@@ -27,7 +27,8 @@ CREATE TABLE quiz(
     user_id INT,
     category_id INT,
     start_time VARCHAR(30),
-    finish_time VARCHAR(30));
+    finish_time VARCHAR(30),
+    score INT);
 
 CREATE TABLE quiz_result(
 	quiz_result_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

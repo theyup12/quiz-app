@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,7 +46,6 @@ public class QuestionController {
             assert answer != null;
             answer[index] = input.orElseGet(()-> null);
         }
-        System.out.println(Arrays.toString(answer));
         model.addAttribute("answerArray", answer);
         if(action.equals("previous")){
             model.addAttribute("index", index - 1);
@@ -66,14 +64,13 @@ public class QuestionController {
         Integer userId = ((User)model.getAttribute("user")).getUserId();
         Integer categoryId = ((Category)model.getAttribute("category")).getCategoryId();
         String startTime = (String)model.getAttribute("startTime");
-        Quiz quiz = quizService.saveQuiz(userId, categoryId, startTime, endTime);
         List<Question> questions = (List<Question>) model.getAttribute("questionsList");
         Integer[] answerArray = (Integer[]) model.getAttribute("answerArray");
+        Integer count = quizService.checkScore(questions, answerArray);
+        Quiz quiz = quizService.saveQuiz(userId, categoryId, startTime, endTime, count);
         quizResultService.saveQuizResult(quiz.getQuizId(), questions, answerArray);
-        System.out.println(questions);
-        System.out.println(Arrays.toString(answerArray));
-
 
         return "submit";
     }
+
 }

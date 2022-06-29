@@ -2,7 +2,6 @@ package com.example.quizApp.dao;
 
 import com.example.quizApp.entity.Choice;
 import com.example.quizApp.entity.Question;
-import com.example.quizApp.entity.Quiz;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class ChoiceDao {
 
     protected final Session getCurrentSession(){return sessionFactory.getCurrentSession();}
     @Transactional
-    public List<Integer> getChoicesByQuestions(List<Question> questions){
+    public List<Integer> getCorrectChoicesByQuestions(List<Question> questions){
         Session currentSession = getCurrentSession();
         List<Integer> correctChoiceIds = new ArrayList<>();
         for(int i = 0; i < 10; i++){

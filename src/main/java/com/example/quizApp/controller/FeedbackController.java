@@ -1,7 +1,6 @@
 package com.example.quizApp.controller;
 
 import com.example.quizApp.domain.FeedbackDomain;
-import com.example.quizApp.domain.UserRegisterDomain;
 import com.example.quizApp.entity.Feedback;
 import com.example.quizApp.entity.User;
 import com.example.quizApp.services.FeedbackService;

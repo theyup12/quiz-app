@@ -20,7 +20,7 @@
             <p>Thank you for submitting. You can now go back to the home page</p>
         </div>
         <div class="col-md-12 text-center">
-            <a href="${pageContext.request.contextPath}/online-quiz/home" class="btn btn-primary">Return to Home</a>
+            <a href="${pageContext.request.contextPath}/online-quiz/create-report-list" class="btn btn-primary">Return to Home</a>
         </div>
 </div>
 

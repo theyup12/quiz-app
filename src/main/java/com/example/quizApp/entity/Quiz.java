@@ -36,6 +36,9 @@ public class Quiz implements Serializable {
     @Column(name="finish_time")
     private String finishTime;
 
+    @Column(name="score")
+    private Integer score;
+
     @OneToMany(mappedBy = "quiz", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
     private Set<QuizResult> quizResults = new HashSet<>();
 }

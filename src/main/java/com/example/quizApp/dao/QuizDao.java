@@ -1,8 +1,6 @@
 package com.example.quizApp.dao;
 
-import com.example.quizApp.domain.FeedbackDomain;
 import com.example.quizApp.entity.Category;
-import com.example.quizApp.entity.Feedback;
 import com.example.quizApp.entity.Quiz;
 import com.example.quizApp.entity.User;
 import org.hibernate.Session;
@@ -12,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
+import java.util.List;
 
 @Repository
 public class QuizDao {
@@ -19,7 +18,7 @@ public class QuizDao {
     protected SessionFactory sessionFactory;
     protected final Session getCurrentSession(){return sessionFactory.getCurrentSession();}
     @Transactional
-    public Quiz saveQuizData(Integer userId, Integer categoryId, String startTime, String endTime) {
+    public Quiz saveQuizData(Integer userId, Integer categoryId, String startTime, String endTime, Integer count) {
         Session currentSession = getCurrentSession();
         Query getUser = currentSession.createQuery("FROM User u WHERE u.userId = :id");
         getUser.setParameter("id", userId);
@@ -30,6 +29,7 @@ public class QuizDao {
                 .user(((User)getUser.getSingleResult()))
                 .startTime(startTime)
                 .finishTime(endTime)
+                .score(count)
                 .build();
         currentSession.persist(newQuiz);
         return newQuiz;
@@ -40,5 +40,13 @@ public class QuizDao {
         Query query = currentSession.createQuery("From Quiz q where q.quizId =:id");
         query.setParameter("id", quizId);
         return (Quiz) query.getSingleResult();
+    }
+    @Transactional
+    public List<Quiz> getQuizByUserId(Integer userId) {
+        Session currentSession = getCurrentSession();
+        Query theQuery = currentSession.createQuery("From Quiz q where q.user.userId =:id");
+        theQuery.setParameter("id", userId);
+        List<Quiz> quizList = theQuery.getResultList();
+        return quizList;
     }
 }
