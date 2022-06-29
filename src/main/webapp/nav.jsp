@@ -21,7 +21,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/user-login">Login</a>
                 </li>
@@ -35,9 +35,13 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/online-quiz/contact">Contact Us</a>
                 </li>
             </ul>
-            <c:if test="${user != null}">
-                <a class="nav-link " href="${pageContext.request.contextPath}/logout">Log Out</a>
-            </c:if>
+                <c:if test="${user != null}">
+                    <div class="nav-item">
+                        <a class="nav-link " href="${pageContext.request.contextPath}/logout">Log Out</a>
+                    </div>
+                </c:if>
+
+
 
         </div>
     </nav>
