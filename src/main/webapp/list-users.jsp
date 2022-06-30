@@ -9,24 +9,46 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Edit User</title>
 </head>
 <body>
+<%@include file="nav.jsp"%>
     <div id="wraper">
         <div id="header">
             <h2>List of User</h2>
         </div>
     </div>
-    <div id="container">
-        <div id="content">
-            <table>
-                <c:forEach var="tempUser" items="${users}">
-                    <tr>
-                        <td>${tempUser}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
-    </div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">User ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Status</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="singleUser" items="${users}" >
+        <tr>
+            <th scope="row">${singleUser.getUserId()}</th>
+            <td>${singleUser.getFirstName()}</td>
+            <td>${singleUser.getLastName()}</td>
+            <td>${singleUser.getEmail()}</td>
+            <td>${singleUser.getPhone()}</td>
+            <c:choose>
+                <c:when test="${singleUser.getIsActive() != 1}">
+                    <td><button>Active</button></td>
+                </c:when>
+                <c:otherwise>
+                    <td><button>Suspend</button></td>
+                </c:otherwise>
+            </c:choose>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>
