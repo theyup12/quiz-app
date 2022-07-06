@@ -40,10 +40,18 @@
             <td>${singleUser.getPhone()}</td>
             <c:choose>
                 <c:when test="${singleUser.getIsActive() != 1}">
-                    <td><button>Active</button></td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/list-user?userId=${singleUser.getUserId()}" method="post">
+                            <button class="btn btn-outline-primary" type="submit" name="status" value="active">Active</button>
+                        </form>
+                    </td>
                 </c:when>
                 <c:otherwise>
-                    <td><button>Suspend</button></td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/list-user?userId=${singleUser.getUserId()}" method="post">
+                            <button class="btn btn-outline-primary" type="submit" name="status" value="suspend">Suspend</button>
+                        </form>
+                    </td>
                 </c:otherwise>
             </c:choose>
         </tr>

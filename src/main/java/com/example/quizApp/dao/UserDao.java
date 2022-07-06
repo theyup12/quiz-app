@@ -69,4 +69,23 @@ public class UserDao {
             return null;
         }
     }
+    @Transactional
+    public void updateUserStatusById(String status, Integer userId) {
+        Session currentSession = getCurrentSession();
+        User user = currentSession.get(User.class, userId);
+        if(status.equals("active")){
+            user.setIsActive((byte) 1);
+        }else{
+            user.setIsActive((byte) 0);
+        }
+        currentSession.merge(user);
+    }
+
+    @Transactional
+    public User getUserById(int userId) {
+        Session currentSession = getCurrentSession();
+        Query theQuery = currentSession.createQuery("From User u where u.userId = :id");
+        theQuery.setParameter("id", userId);
+        return (User) theQuery.getSingleResult();
+    }
 }

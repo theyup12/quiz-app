@@ -40,8 +40,13 @@ public class QuizService {
         }
         return count;
     }
-
+    @Transactional
     public Quiz getQuizByQuizId(Integer quizId) {
         return quizDao.getQuizById(quizId);
+    }
+
+    @Transactional
+    public List<Quiz> getAllQuiz() {
+        return quizDao.getQuiz();
     }
 }

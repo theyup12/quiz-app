@@ -37,7 +37,6 @@ public class QuizResultController {
         if(user != null){
             List<Quiz> quizzes = quizService.getQuizByUser(user.getUserId());
             model.addAttribute("quizzes", quizzes);
-            System.out.println(quizzes.size());
         }
         model.addAttribute("user", user);
         model.addAttribute("categoryList", categoryList);

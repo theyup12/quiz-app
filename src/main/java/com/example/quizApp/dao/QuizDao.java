@@ -49,4 +49,11 @@ public class QuizDao {
         List<Quiz> quizList = theQuery.getResultList();
         return quizList;
     }
+    @Transactional
+    public List<Quiz> getQuiz() {
+        Session currentSession = getCurrentSession();
+        Query theQuery = currentSession.createQuery("From Quiz q");
+        List<Quiz> quizzes = theQuery.getResultList();
+        return quizzes;
+    }
 }

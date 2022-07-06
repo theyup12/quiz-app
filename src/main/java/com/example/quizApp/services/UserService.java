@@ -42,4 +42,12 @@ public class UserService {
         }
         return null;
     }
+    @Transactional
+    public void updateUserStatus(String status, Integer userId) {
+        userDao.updateUserStatusById(status,userId);
+    }
+
+    public User findUserByUserId(int userId) {
+        return userDao.getUserById(userId);
+    }
 }
