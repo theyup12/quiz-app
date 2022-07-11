@@ -34,12 +34,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/online-quiz/contact">Contact Us</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/list-user">User Info</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/overview-quiz">All Quiz</a>
-                </li>
+                <c:if test="${user.getIsAdmin() == 1}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/admin/list-user">User Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/admin/overview-quiz">All Quiz</a>
+                    </li>
+                </c:if>
             </ul>
                 <c:if test="${user != null}">
                     <div class="nav-item">
