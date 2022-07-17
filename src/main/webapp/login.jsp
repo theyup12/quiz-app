@@ -37,7 +37,7 @@
         </div>
         <div class="mt-3">
             <a class="btn btn-outline-primary btn-lg btn-block"
-               role="button" href="${pageContext.request.contextPath}/register-new-user">Regiester</a>
+               role="button" href="${pageContext.request.contextPath}/register-new-user">Register</a>
         </div>
 
     </form:form>

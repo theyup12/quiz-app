@@ -15,14 +15,13 @@
 
 </head>
 <body>
-<br/>
 <h4>All Users History Quizzes:</h4>
 <div>
     <c:if test="${quizzes.size() != 0}">
         <c:forEach var="s" begin="0" end="${quizzes.size() - 1}">
             <div class="list-group">
                 <c:set var = "user" value = "${userList.get(quizzes.get(s).getUser().getUserId()-1)}"/>
-                <a href="${pageContext.request.contextPath}/overview-quiz-report?quizId=${quizzes.get(s).getQuizId()}&userId=${quizzes.get(s).getUser().getUserId()}" class="list-group-item list-group-item-action flex-column align-items-start ">
+                <a href="${pageContext.request.contextPath}/admin/overview-quiz-report?quizId=${quizzes.get(s).getQuizId()}&userId=${quizzes.get(s).getUser().getUserId()}" class="list-group-item list-group-item-action flex-column align-items-start ">
                     <h5 class="mb-1">${user.getFirstName()} ${user.getLastName()}</h5>
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">${categoryList.get(quizzes.get(s).getCategory().getCategoryId()-1).getCategoryName()}</h5>
@@ -35,7 +34,16 @@
         </c:forEach>
     </c:if>
 </div>
-
+<br>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>
 
 </body>
 </html>
